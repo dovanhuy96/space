@@ -4,13 +4,15 @@ import { makeStyles } from "@mui/styles";
 export default makeStyles(() => ({
     wrapperTimeLine: {
         width: '1200px',
-        backgroundColor: '#3333'
+        backgroundColor: '#eaf6ec !important',
+        // padding: '32px'
     },
     wrapNav: {
-        padding: '8px'
+        // marginRight: '15px',
+        borderRadius: '16px',
+        
     },
     wrapContent: {
-        padding: '8px'
     }
 
 }));

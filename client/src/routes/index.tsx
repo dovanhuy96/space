@@ -5,7 +5,6 @@ import { Route } from 'react-router-dom';
 
 const HomePage = lazy(() => import('../pages/Home/index'));
 const LoginPage = lazy(() => import('../pages/Account/Login/index'));
-const TimeLinePage = lazy(() => import('../pages/TimeLine/index'));
 
 export const routes: Array<Iroute> = [
     {
@@ -15,10 +14,10 @@ export const routes: Array<Iroute> = [
         component:() => <HomePage />
     },
     {
-        path: '/time-line',
+        path: '/login',
         exact: true,
         isProtect: false,
-        component:() => <TimeLinePage />
+        component:() => <LoginPage />
     }
 ]
 

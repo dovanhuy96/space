@@ -4,18 +4,18 @@ import { makeStyles } from "@mui/styles";
 export default makeStyles(() => ({
     containerProfile: {
         padding: '8px 0px',
-        backgroundColor: '#3333',
-        borderRadius: '5px'
+        backgroundColor: '#84d26f',
+        borderRadius: '16px 16px 0px 0px',
+        minHeight: '82px'
     },
     name: {
-        marginTop: '5px',
-        color: 'black',
-        fontFamily: 'sans-serif',
+        color: '#484646',
+        fontFamily: 'Mali, cursive',
         fontSize: '20px',
         
         '@media (max-width: 992px)': {
             fontSize: '16px',
-        }
+        },
     }
 }));
   

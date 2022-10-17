@@ -14,12 +14,15 @@ const Profile = observer(() : JSX.Element => {
     const classes = useStyles();
     return (
         <div className={`${classes.containerProfile} flex-col flex-center`}>
-            {!auth ? (
+            {auth ? (
                 <>
                     <Avatar
                         alt="Do Van Huy"
                         src="/static/images/avatar/1.jpg"
                         onClick={() => {setOpenModal(true)}}
+                        sx={{
+                            cursor: 'pointer'
+                        }}
                     />
                     <SettingAccount
                         open={openModal}
