@@ -3,16 +3,16 @@ import { makeStyles } from "@mui/styles";
 
 export default makeStyles(() => ({
     wrapperNav: {
-        backgroundColor: '#ffff',
-        borderRadius: '16px'
+       margin: '0 auto'
     },
     image: {
         width: '100%',
-        textAlign: 'center',
+        // textAlign: 'center',
+        
     
         '& img': {
           width: '100%',
-          maxHeight: 180,
+          maxHeight: '180px',
           objectFit: 'cover',
         },
       },

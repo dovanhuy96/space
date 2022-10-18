@@ -1,16 +1,17 @@
 
-const Home = () : JSX.Element => {
+
+const Analytics = () : JSX.Element => {
     return (
-        <div 
-            className='flex-center' 
+        <div
+            className="flex-center"
             style={{
                 backgroundColor: '#3333',
                 minHeight: '552px',
                 borderRadius: '16px'
             }}
         >
-            content page
+            Content Analytics page
         </div>
     )
 }
-export default Home;
+export default Analytics;

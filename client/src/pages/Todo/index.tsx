@@ -1,5 +1,5 @@
 
-const Home = () : JSX.Element => {
+const Todo = () : JSX.Element => {
     return (
         <div 
             className='flex-center' 
@@ -9,8 +9,8 @@ const Home = () : JSX.Element => {
                 borderRadius: '16px'
             }}
         >
-            content page
+            content Todo Page
         </div>
     )
 }
-export default Home;
+export default Todo;

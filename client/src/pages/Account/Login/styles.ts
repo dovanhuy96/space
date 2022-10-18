@@ -2,8 +2,6 @@ import { makeStyles } from '@mui/styles';
 
 export default makeStyles(() => ({
   formWrap: {
-    minWidth: '20rem',
-    maxWidth: '25rem',
     margin: '0 auto',
   },
 

@@ -12,6 +12,7 @@ export default makeStyles(() => ({
         color: '#484646',
         fontFamily: 'Mali, cursive',
         fontSize: '20px',
+        textAlign: 'center',
         
         '@media (max-width: 992px)': {
             fontSize: '16px',

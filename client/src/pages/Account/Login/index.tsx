@@ -53,7 +53,14 @@ function Login(): JSX.Element {
             {isAuth ? (
                 <Redirect to='/' />
             ) : (
-                <Box p={4} className='box flex-center flex-col'>
+                <Box 
+                    p={10} 
+                    className='flex-center flex-col'
+                    sx={{
+                        backgroundColor: 'white',
+                        borderRadius: '16px'
+                    }}
+                >
                     <Box className={classes.formWrap}>
                         <Stack spacing={4}>
                             <Typography 

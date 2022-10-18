@@ -5,9 +5,45 @@ import { AVARTARS } from "../../../../constants/Images";
 const SettingAccount = (props: any): JSX.Element => {
     const {
         open = false,
-        handleClose = () => {}
+        handleClose = () => {},
+        handleSetting = () => {},
+        infoSetting = {
+            fullName: '',
+            avatar: null,
+        }
     } = props;
-    const [avtIndex, setAvtIndex] = useState(Number(1));
+    const [info, setInfo] = useState<any>(infoSetting)
+
+    const handleChangeInfo = (data: any, field: string) => {
+        // console.log(data);
+        
+        if (field === 'fullName') {
+            if (data && data.length < 27) {
+                setInfo((prev: any) => {
+                    return {
+                        ...prev,
+                        fullName: data
+                    }
+                })
+            }
+            
+        } 
+        else {
+            setInfo((prev: any) => {
+                return {
+                    ...prev,
+                    avatar: data ?? null
+                }
+            })
+        }
+        console.log(info?.fullName);
+    }
+
+    const handleSave = () => {
+        handleClose();
+        handleSetting(info);
+    }
+
     return (
         <Dialog
             open={open}
@@ -19,15 +55,16 @@ const SettingAccount = (props: any): JSX.Element => {
                 {"Account Setting"}
             </DialogTitle>
             <DialogContent sx={{ minHeight: '300px' }}>
-                <DialogContentText>
                 <TextField
                     autoFocus
                     label='Full name'
                     type='text'
                     fullWidth
                     variant='standard'
-                    defaultValue={'Daenerys Targaryen'}
-                    // onChange={}
+                    error={(info.fullName === "" || info.fullName?.length > 27) ? true : false}
+                    helperText={info.fullName === "" ? 'Empty field!' : info.fullName > 27 ? 'Max length Fail!' : ''}
+                    defaultValue={infoSetting?.fullName || ''}
+                    onChange={(e: any) => {handleChangeInfo(e.target.value, 'fullName')}}
                 />
                 <Grid container spacing={2} mt={4}>
                     {AVARTARS.map((avatar: any, index: number) => (
@@ -40,22 +77,21 @@ const SettingAccount = (props: any): JSX.Element => {
                                         height: '64px',
                                         cursor: 'pointer',
                                         border: `${
-                                            index === avtIndex ? 'solid 3px #666' : 'none'
+                                            avatar === info?.avatar ? 'solid 3px #666' : 'none'
                                         }`,
                                     }}
-                                    onClick={() => setAvtIndex(index)}
+                                    onClick={(e: any) => handleChangeInfo(avatar, 'avatar')}
                                 />
                             </div>
                         </Grid>
                     ))}
                 </Grid>
-                </DialogContentText>
             </DialogContent>
             <DialogActions>
                 <Button color="error" variant="contained" size="small" onClick={handleClose}>
                     cancel
                 </Button>
-                <Button variant="contained" size="small" onClick={handleClose}>
+                <Button variant="contained" size="small" onClick={handleSave}>
                     Save
                 </Button>
             </DialogActions>
