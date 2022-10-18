@@ -1,7 +1,6 @@
 
 import { Grid, Paper } from '@mui/material';
 import Navigation from '../components/Navigation';
-import Login from '../pages/Account/Login';
 import useStyles from './styles';
 
 const MainApp = ({ children } : any) : JSX.Element => {
@@ -15,9 +14,6 @@ const MainApp = ({ children } : any) : JSX.Element => {
         >
             <Paper
                 elevation={2}
-                sx={{
-                    padding: '32px'
-                }}
                 className={`${classes.wrapperTimeLine}`}
             >
                 <Grid
@@ -31,8 +27,7 @@ const MainApp = ({ children } : any) : JSX.Element => {
                         <Navigation />
                     </Grid>
                     <Grid item xs={9} className={`${classes.wrapContent}`}>
-                        {/* {children} */}
-                        <Login />
+                        {children}
                     </Grid>
                 </Grid>
             </Paper>

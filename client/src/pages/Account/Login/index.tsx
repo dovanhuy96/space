@@ -56,7 +56,15 @@ function Login(): JSX.Element {
                 <Box p={4} className='box flex-center flex-col'>
                     <Box className={classes.formWrap}>
                         <Stack spacing={4}>
-                            <Typography component='h3' variant='h3'>
+                            <Typography 
+                                component='h3' 
+                                variant='h3' 
+                                sx={{ 
+                                    textAlign: 'center',
+                                    fontFamily: 'Mali',
+                                    fontSize: '40px'
+                                }}
+                            >
                                 LOGIN
                             </Typography>
 

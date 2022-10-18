@@ -20,10 +20,11 @@ export default makeStyles(() => ({
     padding: '1rem',
     outline: 'none',
     border: 'none',
-    backgroundColor: '#eaf6ec',
+    backgroundColor: '#d3d3d3',
     borderRadius: '0 4px 4px 0',
     fontSize: '1rem',
-    color: '#666666',
+    fontFamily: 'Mali',
+    color: 'black',
   },
 
   passwordIcon: {

@@ -1,6 +1,6 @@
 import { Dialog, DialogTitle, DialogContentText, DialogContent, DialogActions, Button, TextField, Grid, Avatar } from "@mui/material";
 import { useState } from "react";
-import Im from '../../../../../public/assets/images/avatars/1.png';
+import { AVARTARS } from "../../../../constants/Images";
 
 const SettingAccount = (props: any): JSX.Element => {
     const {
@@ -14,14 +14,11 @@ const SettingAccount = (props: any): JSX.Element => {
             onClose={handleClose}
             aria-labelledby="responsive-dialog-title"
             scroll="body"
-            sx={{
-                // height: '300px'
-            }}
         >
             <DialogTitle id="responsive-dialog-title">
                 {"Account Setting"}
             </DialogTitle>
-            <DialogContent sx={{ maxHeight: '300px' }}>
+            <DialogContent sx={{ minHeight: '300px' }}>
                 <DialogContentText>
                 <TextField
                     autoFocus
@@ -29,15 +26,15 @@ const SettingAccount = (props: any): JSX.Element => {
                     type='text'
                     fullWidth
                     variant='standard'
-                    defaultValue={'Do Van Huy'}
+                    defaultValue={'Daenerys Targaryen'}
                     // onChange={}
                 />
                 <Grid container spacing={2} mt={4}>
-                    {new Array(24).fill(1).map((_, index) => (
+                    {AVARTARS.map((avatar: any, index: number) => (
                         <Grid key={index} item sm={2}>
                             <div className='flex-center'>
                                 <Avatar
-                                    src={`../../../../../public/assets/images/avatars/${index}.png`}
+                                    src={avatar}
                                     sx={{
                                         width: '64px',
                                         height: '64px',

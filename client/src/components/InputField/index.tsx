@@ -13,7 +13,7 @@ function InputField(props: InputFieldProps) {
 	const [inputType, setInputType] = useState<string>(type);
 
 	return (
-		<div className={`${classes.inputGroup} flex-center-ver`}>
+		<div className={`${classes.inputGroup} flex-center--ver`}>
 			{Icon && (
 				<div className={`${classes.inputIcon} h-100 flex-center`}>
 					<Icon className={classes.icon} />
@@ -21,7 +21,7 @@ function InputField(props: InputFieldProps) {
 			)}
 
 			<input
-				className={`${classes.input} wh-100`}
+				className={`${classes.input} w-100 h-100`}
 				type={inputType}
 				{...inputProps}
 			/>

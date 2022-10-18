@@ -4,12 +4,12 @@ import useStyles from './styles';
 import authStore from "../../../store/AuthStore";
 import { useState } from "react";
 import SettingAccount from "./SettingAccount";
+import { useHistory } from "react-router-dom";
 
 const Profile = observer(() : JSX.Element => {
     const auth = authStore.isAuth;
     const [openModal, setOpenModal] = useState<boolean>(false);
-    console.log("openModal", openModal);
-    
+    const history = useHistory();
     
     const classes = useStyles();
     return (
@@ -31,7 +31,7 @@ const Profile = observer(() : JSX.Element => {
                     <span 
                         className={`${classes.name}`}
                     >
-                        Do Van Huy
+                       Daenerys Targaryen
                     </span>
                 </>
             ) : (
@@ -41,6 +41,7 @@ const Profile = observer(() : JSX.Element => {
                         height: '30px',
                     }}
                     variant="outlined"
+                    onClick={() => {history.push('/login')}}
                 >
                     Login
                 </Button>
