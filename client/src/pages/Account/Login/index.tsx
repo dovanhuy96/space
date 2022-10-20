@@ -13,7 +13,6 @@ interface SigninFormValue {
 }
 
 function Login(): JSX.Element {
-    // const { buttonClass, titleClass } = useCommonStyles();
     const classes = useStyles();
     const [error, setError] = useState({ isError: false, msg: '' });
     const formValues = useRef<SigninFormValue>({ username: '', password: '' });
@@ -30,31 +29,16 @@ function Login(): JSX.Element {
         }
 
         setIsSigning(true);
-            // const email = username + otherConstants.EMAIL_DOMAIN;
-            // try {
-            //     const userCredential = await signInWithEmailAndPassword(
-            //         auth.getAuth(),
-            //         email,
-            //         password,
-            //     );
-            //     if (userCredential) {
-            //         history.push('/');
-            //     }
-            // } catch (err: any) {
-            //     if (err?.code) {
-            //         setError({ isError: true, msg: err.code });
-            //     }
-            //     setIsSigning(false);
-            // }
-        };
+        
+    };
 
     return (
         <>
             {isAuth ? (
                 <Redirect to='/' />
             ) : (
-                <Box 
-                    p={10} 
+                <Box
+                    p={10}
                     className='flex-center flex-col'
                     sx={{
                         backgroundColor: 'white',
@@ -63,10 +47,10 @@ function Login(): JSX.Element {
                 >
                     <Box className={classes.formWrap}>
                         <Stack spacing={4}>
-                            <Typography 
-                                component='h3' 
-                                variant='h3' 
-                                sx={{ 
+                            <Typography
+                                component='h3'
+                                variant='h3'
+                                sx={{
                                     textAlign: 'center',
                                     fontFamily: 'Mali',
                                     fontSize: '40px'

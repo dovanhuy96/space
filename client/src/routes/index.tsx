@@ -36,8 +36,8 @@ export const routes: Array<Iroute> = [
     },
     {
         path: '/todos',
-        exact: true,
-        isProtect: false,
+        exact: false,
+        isProtect: true,
         component:() => <TodoPage />
     }
 ]

@@ -1,6 +1,8 @@
-import { Dialog, DialogTitle, DialogContentText, DialogContent, DialogActions, Button, TextField, Grid, Avatar } from "@mui/material";
-import { useState } from "react";
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField, Grid, Avatar, InputAdornment } from "@mui/material";
+import { useEffect, useState } from "react";
 import { AVARTARS } from "../../../../constants/Images";
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import { INVALID_USER, LENGTH_TEXT } from "../../../../constants/Message";
 
 const SettingAccount = (props: any): JSX.Element => {
     const {
@@ -12,21 +14,21 @@ const SettingAccount = (props: any): JSX.Element => {
             avatar: null,
         }
     } = props;
-    const [info, setInfo] = useState<any>(infoSetting)
+    const [info, setInfo] = useState<any>(infoSetting);
+    const [avatarChose, setAvatarChose] = useState<any>(null);
+
+    useEffect(() => {
+        
+    }, [])
 
     const handleChangeInfo = (data: any, field: string) => {
-        // console.log(data);
-        
         if (field === 'fullName') {
-            if (data && data.length < 27) {
-                setInfo((prev: any) => {
-                    return {
-                        ...prev,
-                        fullName: data
-                    }
-                })
-            }
-            
+            setInfo((prev: any) => {
+                return {
+                    ...prev,
+                    fullName: data
+                }
+            })
         } 
         else {
             setInfo((prev: any) => {
@@ -35,13 +37,14 @@ const SettingAccount = (props: any): JSX.Element => {
                     avatar: data ?? null
                 }
             })
+            setAvatarChose(data);
         }
-        console.log(info?.fullName);
     }
 
     const handleSave = () => {
         handleClose();
         handleSetting(info);
+        setAvatarChose(null);
     }
 
     return (
@@ -62,9 +65,23 @@ const SettingAccount = (props: any): JSX.Element => {
                     fullWidth
                     variant='standard'
                     error={(info.fullName === "" || info.fullName?.length > 27) ? true : false}
-                    helperText={info.fullName === "" ? 'Empty field!' : info.fullName > 27 ? 'Max length Fail!' : ''}
+                    helperText={
+                        !info.fullName 
+                        ? INVALID_USER.FIELD_REQUIRED('Full name') 
+                        : info.fullName.length > LENGTH_TEXT.MAX_LENGTH_FULL_NAME 
+                        ? INVALID_USER.EXCEEDS_CHARACTER 
+                        : ''
+                    }
                     defaultValue={infoSetting?.fullName || ''}
                     onChange={(e: any) => {handleChangeInfo(e.target.value, 'fullName')}}
+                    InputProps={{
+                    endAdornment: (
+                            <InputAdornment position="start">
+                                {(!info.fullName || info.fullName.length > LENGTH_TEXT.MAX_LENGTH_FULL_NAME ) 
+                                && <ErrorOutlineIcon sx={{ color: '#d32f2f' }} />}
+                            </InputAdornment>
+                        ),
+                    }}
                 />
                 <Grid container spacing={2} mt={4}>
                     {AVARTARS.map((avatar: any, index: number) => (
@@ -77,7 +94,7 @@ const SettingAccount = (props: any): JSX.Element => {
                                         height: '64px',
                                         cursor: 'pointer',
                                         border: `${
-                                            avatar === info?.avatar ? 'solid 3px #666' : 'none'
+                                            avatar === avatarChose ? 'solid 3px #666' : 'none'
                                         }`,
                                     }}
                                     onClick={(e: any) => handleChangeInfo(avatar, 'avatar')}
@@ -88,10 +105,23 @@ const SettingAccount = (props: any): JSX.Element => {
                 </Grid>
             </DialogContent>
             <DialogActions>
-                <Button color="error" variant="contained" size="small" onClick={handleClose}>
+                <Button 
+                    color="error" 
+                    variant="contained" 
+                    size="small" 
+                    onClick={handleClose}
+                >
                     cancel
                 </Button>
-                <Button variant="contained" size="small" onClick={handleSave}>
+                <Button 
+                    variant="contained" 
+                    size="small" 
+                    onClick={handleSave}
+                    disabled={
+                        !info.fullName 
+                        || info.fullName.length > LENGTH_TEXT.MAX_LENGTH_FULL_NAME 
+                    } 
+                >
                     Save
                 </Button>
             </DialogActions>
