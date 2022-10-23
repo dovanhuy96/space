@@ -1,1 +1,7 @@
 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
+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
+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
+
+OpI1tQFR7lW0t8l3
+
+mongodb+srv://dovanhuy96:<password>@cluster0.eholcyr.mongodb.net/?retryWrites=true&w=majority

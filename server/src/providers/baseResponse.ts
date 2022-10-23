@@ -13,38 +13,42 @@ interface responseObject {
     status?: number
 }
 
-export class ResponseWrapper {
+export class BaseResponse {
     public res: Response
 
     constructor(response: Response) {
         this.res = response
     }
 
-    public handle(response: responseObject, success_code: number, fail_code: number): Response {
-        if (response.success) {
-            return this.res.status(success_code).send(response)
+    public handle(response: responseObject, code: number): Response {
+        let failCode = 400;
+        if (code) {
+            return this.res.status(code).send(response)
         }
         if (response.status) {
-            fail_code = response.status
+            failCode = response.status
         }
 
         delete response.status
-        return this.res.status(fail_code).send(response)
+        return this.res.status(failCode).send(response)
     }
 
     public created(response: responseObject): Response {
-        return this.handle(response, 201, 400)
+        return this.handle(response, 201)
     }
 
     public ok(response: responseObject): Response {
-        return this.handle(response, 200, 400)
+        return this.handle(response, 200)
     }
 
     public unauthorized(response: responseObject): Response {
-        return this.handle(response, 200, 401)
+        return this.handle(response, 401)
     }
 
     public forbidden(response: responseObject): Response {
-        return this.handle(response, 200, 403)
+        return this.handle(response, 403)
+    }
+    public badRequest(response: responseObject): Response {
+        return this.handle(response, 400)
     }
 }
