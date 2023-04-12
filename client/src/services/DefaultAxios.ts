@@ -13,7 +13,7 @@ class DefaultAxios {
             : process.env.REACT_APP_API_URL
 
         this.api = axios.create({
-            baseURL: `${this.URL}/${process.env.API_CURRENT_VERSION}`,
+            baseURL: `${this.URL}/`,
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -34,7 +34,6 @@ class DefaultAxios {
 
     handleError = (error: any) => {
         if (RESPONSE_STATUS.FAIL.indexOf(error?.response?.status) > -1) {
-            localStorageHelper.remove('token');
             const evt = new CustomEvent('rolbackRoute', {
                 detail: '/login',
             });
